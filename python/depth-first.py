@@ -1,3 +1,8 @@
+def depthFirstWithRecursion(graph: dict(), node: str):
+    print(node)
+    for neighbor in graph.get(node):
+        depthFirstWithRecursion(graph, neighbor)
+
 def depthFirstNoRecursion(graph: dict(), rootNode: str) -> None:
     #Create a stack since we are not using recursion to manage the stack
     stack = [ rootNode ]
@@ -12,7 +17,7 @@ def depthFirstNoRecursion(graph: dict(), rootNode: str) -> None:
         for neighbor in graph[current]:
             stack.append(neighbor)
 
-#Demo depth first with no recursion
+#Test data
 graph = {
     'a': ['b','c'],
     'b': ['d'],
@@ -22,5 +27,12 @@ graph = {
     'f': [],
 }
 
+#Demo depth first with no recursion
+print("Depth First Algorithm w/o Recursion")
 print("Graph:", graph)
 depthFirstNoRecursion(graph, 'a') # Expected output of the traversial is acebdf
+
+#Demo depth first with no recursion
+print("Depth First Algorithm w/ Recursion")
+print("Graph: ", graph)
+depthFirstWithRecursion(graph, 'a') # Expected output of the traversial is abdfce <- call stack vs built stack
