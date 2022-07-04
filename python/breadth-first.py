@@ -1,10 +1,15 @@
 def breadthFirst(graph: dict(), node: str) -> None:
+    # Cycle guard -> no duplicate entries; will only be used to see if a node has been visted
+    visted = set()
     queue = [ node ]
     while len(queue) > 0:
         current = queue.pop(0)
         print(current)
 
         for neighbor in graph[current]:
+            #Check if this node has been visted already
+            if current in visted: continue
+             
             queue.append(neighbor)
 
 # Test data
