@@ -1,6 +1,9 @@
-def depthFirstWithRecursion(graph: dict(), node: str):
+def depthFirstWithRecursion(graph: dict(), node: str, visited=set()):
     print(node)
     for neighbor in graph.get(node):
+        #Protect against cycles by marking a node as visited
+        if neighbor in visited: continue
+        visited.add(neighbor)
         depthFirstWithRecursion(graph, neighbor)
 
 def depthFirstNoRecursion(graph: dict(), rootNode: str) -> None:
