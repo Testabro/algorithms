@@ -3,6 +3,10 @@
     O(n) space complexity 
 """
 
+from datetime import _IsoCalendarDate
+from typing_extensions import Self
+
+
 class BinaryNode:
     """
         An object that can hold two other same type object values and an integer value
@@ -35,3 +39,17 @@ class BinaryNode:
             if self.right_node:
                 self.right_node.insert(value)
             self.right_node = BinaryNode(value)
+
+    def get_min(self) -> int:
+        current = self
+        while current.left_node is not None:
+            current = current.left_node
+        return current.value
+    
+    def get_max(self) -> int:
+        current = self
+        while current.right is not None:
+            current = current.right_node
+        return current.value
+    
+    
