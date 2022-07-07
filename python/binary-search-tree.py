@@ -52,4 +52,17 @@ class BinaryNode:
             current = current.right_node
         return current.value
     
-    
+    def exists(self, value: int) -> bool():
+        if value == self.value:
+            return True
+        
+        if value < self.value:
+            if self.left_node == None:
+                return False
+            return self.left.exists(value)
+        
+        if self.right == None:
+            return False
+        return self.right.exists(value)
+
+            
