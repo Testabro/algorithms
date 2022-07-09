@@ -8,3 +8,7 @@ Collections of short common algorithms for building reference
 
 #### Python bult-in functions
 https://wiki.python.org/moin/TimeComplexity
+
+
+## Algoritms for Consideration in System Design ##
+![System Design Algorithms](system-design-algorithm.jpg)
