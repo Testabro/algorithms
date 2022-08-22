@@ -1,5 +1,5 @@
 # algorithms
-Collections of short common algorithms for building reference
+Collections of short common algorithms and data strutures for building reference
 
 
 ## Time and Space Complexity
