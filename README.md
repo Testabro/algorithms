@@ -10,5 +10,5 @@ Collections of short common algorithms and data strutures for building reference
 https://wiki.python.org/moin/TimeComplexity
 
 
-## Algoritms for Consideration in System Design ##
+## Algorithms for Consideration in System Design ##
 ![System Design Algorithms](system-design-algorithm.jpg)
