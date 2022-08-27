@@ -22,7 +22,7 @@ class LinkedList:
   """ A collection of Nodes that are singularly linked with a defined begining Node
   
   Attributes:
-    head_node: A refernce to a Node that represents the begining of the linked list
+    head_node: A referance to a Node that represents the begining of the linked list
   """
   def __init__(self, value=None):
     self.head_node = Node(value)
