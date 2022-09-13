@@ -22,7 +22,7 @@ class LinkedList:
   """ A collection of Nodes that are singularly linked with a defined begining Node
   
   Attributes:
-    head_node: A refernce to a Node that represents the begining of the linked list
+    head_node: A referance to a Node that represents the begining of the linked list
   """
   def __init__(self, value=None):
     self.head_node = Node(value)
@@ -57,6 +57,64 @@ class LinkedList:
           current_node = None
           break
         current_node = next_node
+  
+  def swap_nodes(input_list, val1, val2):
+    node1 = input_list.head_node
+    node2 = input_list.head_node
+    node1_prev = None
+    node2_prev = None
+  
+    #Update pointers to previous node
+    while node1 is not None:
+      if node1.get_value() == val1:
+        break
+      node1_prev = node1
+      node1 = node1.get_next_node()
+    
+    while node2 is not None:
+      if node2.get_value() == val2:
+        break
+      node2_prev = node2
+      node2 = node2.get_next_node()
+
+    if node1_prev is None:
+      input_list.head_node = node2
+    else:
+      node1_prev.set_next_node(node2)
+    
+    if node2_prev is None:
+      input_list.head_node = node1
+    else:
+      node2_prev.set_next_node(node1)
+    
+    #Update pointers to next node  
+    temp = node1.get_next_node()
+    node1.set_next_node(node2.get_next_node())
+    node2.set_next_node(temp)
+
+def nth_last_node(linked_list, n):
+  current = None
+  tail_seeker = linked_list.head_node
+  count = 1
+  while tail_seeker:
+    tail_seeker = tail_seeker.get_next_node()
+    count += 1
+    if count >= n + 1:
+      if current is None:
+        current = linked_list.head_node
+      else:
+        current = current.get_next_node()
+  return current
+
+def find_middle(linked_list):
+  fast = linked_list.head_node
+  slow = linked_list.head_node
+  while fast:
+    fast = fast.get_next_node()
+    if fast:
+      fast = fast.get_next_node()
+      slow = slow.get_next_node()
+    return slow 
 
     def swap_nodes(input_list, val1, val2):
         node1 = input_list.head_node
