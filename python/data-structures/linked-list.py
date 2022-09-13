@@ -58,6 +58,18 @@ class LinkedList:
           break
         current_node = next_node
 
+    def swap_nodes(input_list, val1, val2):
+        node1 = input_list.head_node
+        node2 = input_list.head_node
+        node1_prev = None
+        node2_prev = None
+        
+        while node1 is not None:
+            if node1.get_value() == val1:
+                break
+            node1_prev = node1
+            node1 = node1.get_next_node()
+
 ### DEMO ###
 ll = LinkedList(5)
 ll.insert_beginning(70)
