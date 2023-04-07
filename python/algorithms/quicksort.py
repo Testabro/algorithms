@@ -1,33 +1,38 @@
-from random import randrange
-
+from random import randrange, shuffle 
 def quicksort(list, start, end):
+  # this portion of listay has been sorted
   if start >= end:
-    return list
+    return
 
-  pivot_idx = randrange(start, end)
+  # select random element to be pivot
+  pivot_idx = randrange(start, end + 1)
   pivot_element = list[pivot_idx]
+
+  # swap random element with last element in sub-listay
   list[end], list[pivot_idx] = list[pivot_idx], list[end]
 
-  # Create the lesser_than_pointer
-  lesser_than_pointer = start
+  # tracks all elements which should be to left (lesser than) pivot
+  less_than_pointer = start
   
-  # Start a for loop, use 'idx' as the variable
-  for idx in range(start, end):
-    # Check if the value at idx is less than the pivot
-    if list[idx] < pivot_element:
-    # If so: 
-      # 1) swap lesser_than_pointer and idx values
-      list[idx], list[lesser_than_pointer] = list[lesser_than_pointer], list[idx]
-      # 2) increment lesser_than_pointer
-      lesser_than_pointer += 1
-  # After the loop is finished...
-  # swap pivot with value at lesser_than_pointer
-  list[lesser_than_pointer], list[end] = list[end], list[lesser_than_pointer]
-  print(list[start])
-  start += 1
-  return quicksort(list, start, end)
+  for i in range(start, end):
+    # we found an element out of place
+    if list[i] < pivot_element:
+      # swap element to the right-most portion of lesser elements
+      list[i], list[less_than_pointer] = list[less_than_pointer], list[i]
+      # tally that we have one more lesser element
+      less_than_pointer += 1
+  # move pivot element to the right-most portion of lesser elements
+  list[end], list[less_than_pointer] = list[less_than_pointer], list[end]
+  
+  # Call quicksort on the "left" and "right" sub-lists
+  quicksort(list, start, less_than_pointer - 1)
+  quicksort(list, less_than_pointer + 1, end)
+  
+  
+unsorted_list = [3,7,12,24,36,42]
+shuffle(unsorted_list)
+print(unsorted_list)
+# use quicksort to sort the list, then print it out!
 
-my_list = [42, 103, 22]
-print("BEFORE: ", my_list)
-sorted_list = quicksort(my_list, 0, len(my_list) - 1)
-print("AFTER: ", sorted_list)
+quicksort(unsorted_list, 0, len(unsorted_list) - 1)
+print(unsorted_list)
